@@ -12,10 +12,13 @@ function AppCtrl($scope, $http) {
   });
 }
 
-function MyCtrl1() {}
-MyCtrl1.$inject = [];
-
-
-function MyCtrl2() {
+function MyCtrl1($scope) {
+  
 }
-MyCtrl2.$inject = [];
+//MyCtrl1.$inject = [];
+
+
+function MyCtrl2($scope) {
+    
+}
+//MyCtrl2.$inject = [];
