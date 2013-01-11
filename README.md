@@ -1,14 +1,10 @@
-todo
+### Todo
 
 Simple todo example app with AngularJS on the frontend, Node/Express on the backend.
 
-Clone the angular-express-seed repo, run `npm install` to grab the dependencies.
+Clone the repo, run `npm install` to grab the dependencies and run with: 
 
-### Running the app
-
-Runs like a typical express app:
-
-    node app.js
+    node server.js
 
 ### Thanks to ...
 <https://github.com/btford/angular-express-seed>
