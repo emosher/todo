@@ -4,10 +4,10 @@
  */
 
 exports.index = function(req, res){
-  res.sendfile('public/index.html');
+  res.render('index');
 };
 
 exports.partials = function (req, res) {
   var name = req.params.name;
-  res.sendfile('public/partials/' + name);
+  res.render('partials/' + name);
 };

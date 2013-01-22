@@ -10,14 +10,15 @@
         <script src="js/filters.js"></script>
         <script src="js/directives.js"></script>
         <script src="js/services.js"></script>
-        <link rel="stylesheet" href="app.css"/>
+        <link rel="stylesheet" href="css/app.css"/>
     </head>
     
     <body ng-controller="AppCtrl">
         
         <h1>{{name}}'s Todo List</h1>
         
-        [ <a href="#/one">View One</a> | <a href="#/two">View Two</a> ]
+        <!-- To work with backend, all links must be in "/link" structure, not "#/link" as Angular uses -->
+        [ <a href="/one">View One</a> | <a href="/two">View Two</a> ]
         
         <div ng-view></div>
         
