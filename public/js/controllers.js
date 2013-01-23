@@ -12,13 +12,16 @@ function AppCtrl($scope, $http) {
   });
 }
 
-function MyCtrl1($scope) {
-  
+function ListCtrl($scope, Tasks) {
+    $scope.tasks = Tasks.get();
 }
-//MyCtrl1.$inject = [];
 
-
-function MyCtrl2($scope) {
+function AddCtrl($scope, Tasks) {
+    $scope.newTask = "";
     
+    $scope.addTask = function() {
+        Tasks.add($scope.newTask);
+        $scope.newTask = "";
+    };
 }
-//MyCtrl2.$inject = [];
+

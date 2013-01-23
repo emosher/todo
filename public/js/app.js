@@ -4,8 +4,8 @@
 // Declare app level module which depends on filters, and services
 angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives']).
   config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-    $routeProvider.when('/one', {templateUrl: 'partials/one', controller: MyCtrl1});
-    $routeProvider.when('/two', {templateUrl: 'partials/two', controller: MyCtrl2});
-    $routeProvider.otherwise({redirectTo: '/one'});
+    $routeProvider.when('/list', {templateUrl: 'partials/list', controller: ListCtrl});
+    $routeProvider.when('/add', {templateUrl: 'partials/add', controller: AddCtrl});
+    $routeProvider.otherwise({redirectTo: '/list'});
     $locationProvider.html5Mode(true);
   }]);

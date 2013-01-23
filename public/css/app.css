@@ -28,3 +28,12 @@
   content: "";
   padding: 0;
 }
+
+li {
+    list-style: none outside none;
+}
+
+.done-true {
+    text-decoration: line-through;
+    color: grey;
+}
