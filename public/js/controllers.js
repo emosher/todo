@@ -12,7 +12,7 @@ function AddCtrl($scope, TaskDB) {
     $scope.newTask = "";
     
     $scope.addTask = function() {
-        TaskDB.$save({ "text" : $scope.newTask, "done" : false });
+        TaskDB.save({ "text" : $scope.newTask, "done" : false });
         $scope.newTask = "";
     };
 }
