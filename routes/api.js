@@ -38,3 +38,17 @@ exports.add = function(req, res) {
     tasks.push(req.body);
     res.json(req.body);
 };
+
+/**
+ * PUT update done field on a given task
+ */
+exports.edit = function(req, res) {
+    
+};
+
+/**
+ * DELETE delete the given task
+ */
+exports.remove = function(req, res) {
+    
+};
