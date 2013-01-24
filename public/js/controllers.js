@@ -1,27 +1,20 @@
-'use strict';
+"use strict";
 
 /* Controllers */
 
-function AppCtrl($scope, $http) {
-  $http({method: 'GET', url: '/api/name'}).
-  success(function(data, status, headers, config) {
-    $scope.name = data.name;
-  }).
-  error(function(data, status, headers, config) {
-    $scope.name = 'Error!'
-  });
+function ListCtrl($scope, TaskDB) {
+    $scope.tasks = TaskDB.query();
 }
 
-function ListCtrl($scope, Tasks) {
-    $scope.tasks = Tasks.get();
-}
+// ListCtrl.$inject = [ "$scope", "TaskDB" ];
 
-function AddCtrl($scope, Tasks) {
+function AddCtrl($scope, TaskDB) {
     $scope.newTask = "";
     
     $scope.addTask = function() {
-        Tasks.add($scope.newTask);
+        TaskDB.$save({ "text" : $scope.newTask, "done" : false });
         $scope.newTask = "";
     };
 }
 
+// AddCtrl.$inject = [ "$scope", "TaskDB" ];
