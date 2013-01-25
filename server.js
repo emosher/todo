@@ -45,10 +45,10 @@ app.get("/api/tasks", api.tasks);
 app.post("/api/tasks", api.add);
 
 // PUT
-app.put("/api/tasks/:text", api.edit);
+app.put("/api/tasks/:id", api.edit);
 
 // DELETE
-app.delete("api/tasks/:text", api.remove);
+app.del("/api/tasks/:id", api.remove);
 
 // redirect all others to the index (HTML5 history)
 app.get("*", routes.index);

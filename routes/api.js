@@ -1,54 +1,81 @@
-/*
- * Serve data to our AngularJS client.  This is the file that will do database work (eventually).
+/**
+ * Module dependencies
  */
+var mongo = require("mongodb");
 
-var tasks = [{
-                text: "learn Angular",
-                done: true
-            },
-            {
-                text: "learn Node",
-                done: true
-            },
-            {
-                text: "learn MongoDB",
-                done: false
-            },
-            {
-                text: "learn Socket.io",
-                done: false
-            },
-            {
-                text: "learn Express",
-                done: false
-            }
-        ];
+// DB setup & connect
+var Server = mongo.Server,
+    Db = mongo.Db,
+    BSON = mongo.BSONPure;
+    
+var server = new Server("localhost", 27017, {auto_reconnect: true});
+var db = new Db("TaskDB", server);
+
+db.open(function(err, db) {
+    console.log("Connected to the 'TaskDB' database");
+});
+
+var collection = db.collection("tasks");
 
 /**
  * GET a list of all tasks
  */
 exports.tasks = function(req, res) {
-    res.json(tasks);
+    console.log("Retrieving all tasks.");
+    collection.find().toArray(function(err, items) {
+        res.send(items);
+    });
 };
 
 /**
  * POST a new task
  */
 exports.add = function(req, res) {
-    tasks.push(req.body);
-    res.json(req.body);
+    var task = req.body;
+    console.log("Adding task: " + JSON.stringify(task));
+    collection.insert(task, {w:1}, function(err, result) {
+        if (err) {
+            res.send({ "error": "An error occured - " + err });
+        }
+        else {
+            res.send(result[0]);
+        }
+    });
+    res.json(req.body); 
 };
 
 /**
  * PUT update done field on a given task
  */
 exports.edit = function(req, res) {
-    
+    var id = req.params.id,
+        task = req.body;
+    collection.update({"_id": new BSON.ObjectID(id)}, task, function(err, result) {
+        if (err) {
+            console.log("Error updating task: " + err);
+            res.send({"error": "An error occured - " + err});
+        }
+        else {
+            console.log("" + result + " document updated");
+            res.send(task);
+        }
+    });
 };
 
 /**
  * DELETE delete the given task
  */
 exports.remove = function(req, res) {
-    
+    var id = req.params.id;
+    console.log("Deleting task: " + id);
+    collection.remove({"_id": new BSON.ObjectID(id)}, {w: 1}, function(err, result) {
+        if (err) {
+            console.log("Error deleting task: " + err);
+            res.send({"error": "An error occured - " + err});
+        }
+        else {
+            console.log("" + result + " document deleted");
+            res.send(req.body);
+        }
+    });
 };
