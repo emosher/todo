@@ -1,3 +1,7 @@
-<ul ng-repeat="task in tasks">
-    <li class="done-{{task.done}}"><input ng-model="task.done" type="checkbox"> {{task.text}}</li>
+<ul>
+    <li ng-repeat="task in tasks" class="done-{{task.done}}">
+        <input ng-model="task.done" ng-click="update(task)" type="checkbox"> {{task.text}} 
+    </li>
 </ul>
+
+[<a ng-click="remove()">Clear Finished</a>]
