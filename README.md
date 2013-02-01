@@ -17,7 +17,7 @@ The frontend is designed to be as simple as possible.  It uses Angular JS to dis
 The backend will use Express to handle the main app logic and routing.  MongoDB will handle the data and if I get to it, Socket.IO will handle... well, Socketing.  The API will be:
 
     /api/tasks          GET     Get an array of all tasks
-    /api/tasks/:name    GET     Get the task with name of :name
+    /api/tasks/:id      GET     Get the task with id of :id
     /api/tasks          POST    Add a new task
-    /api/tasks/:name    PUT     Update the task with name of :name
-    /api/tasks/:name    DELETE  Remove the task with name of :name
+    /api/tasks/:id      PUT     Update the task with id of :id
+    /api/tasks/:id      DELETE  Remove the task with id of :id
