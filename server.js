@@ -40,6 +40,7 @@ app.get("/partials/:name", routes.partials);
 
 // GET
 app.get("/api/tasks", api.tasks);
+app.get("/api/tasks/:id", api.getById);
 
 // POST
 app.post("/api/tasks", api.add);

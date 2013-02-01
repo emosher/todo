@@ -28,6 +28,17 @@ exports.tasks = function(req, res) {
 };
 
 /**
+ * GET a single task
+ */
+exports.getById = function(req, res) {
+    var id = req.params.id;
+    console.log("Retrieving task with ID - " + id);
+    collection.findOne({"_id": new BSON.ObjectID(id)}, function(err, item) {
+        res.send(item);
+    });
+};
+
+/**
  * POST a new task
  */
 exports.add = function(req, res) {
